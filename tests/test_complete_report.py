@@ -56,21 +56,21 @@ def stock():
 @pytest.mark.dependency()
 def test_validar_completereport_retorna_data_de_fabricacao_mais_antiga(stock):
     for stk in itertools.permutations(stock):
-        report = CompleteReport.generate(stk)  # type: ignore
+        report = CompleteReport.generate(list(stk))  # type: ignore
         assert f"Data de fabricação mais antiga: {oldest_date}" in report
 
 
 @pytest.mark.dependency()
 def test_validar_completereport_retorna_validade_mais_proxima(stock):
     for stk in itertools.permutations(stock):
-        report = CompleteReport.generate(stk)  # type: ignore
+        report = CompleteReport.generate(list(stk))  # type: ignore
         assert f"Data de validade mais próxima: {closest_date}" in report
 
 
 @pytest.mark.dependency()
 def test_validar_completereport_retorna_empresa_com_maior_estoque(stock):
     for stk in itertools.permutations(stock):
-        report = CompleteReport.generate(stk)  # type: ignore
+        report = CompleteReport.generate(list(stk))  # type: ignore
         expected = f"Empresa com mais produtos: {company_bigger_stock}"
         assert expected in report
 
@@ -78,7 +78,7 @@ def test_validar_completereport_retorna_empresa_com_maior_estoque(stock):
 @pytest.mark.dependency()
 def test_validar_completereport_retorna_quantidade_de_estoque_correto(stock):
     for stk in itertools.permutations(stock):
-        report = CompleteReport.generate(stk)  # type: ignore
+        report = CompleteReport.generate(list(stk))  # type: ignore
 
         expected = [
             "Produtos estocados por empresa:\n",
@@ -93,7 +93,7 @@ def test_validar_completereport_retorna_quantidade_de_estoque_correto(stock):
 @pytest.mark.dependency()
 def test_validar_completereport_retorna_formato_correto(stock):
     for stk in itertools.permutations(stock):
-        report = CompleteReport.generate(stk)  # type: ignore
+        report = CompleteReport.generate(list(stk))  # type: ignore
         expect_start = (
             f"Data de fabricação mais antiga: {oldest_date}\n"
             f"Data de validade mais próxima: {closest_date}\n"
