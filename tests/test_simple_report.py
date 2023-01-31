@@ -56,21 +56,21 @@ def stock():
 @pytest.mark.dependency()
 def test_validar_simplereport_retorna_data_de_fabricacao_mais_antiga(stock):
     for stk in itertools.permutations(stock):
-        report = SimpleReport.generate(stk)  # type: ignore
+        report = SimpleReport.generate(list(stk))  # type: ignore
         assert f"Data de fabricação mais antiga: {oldest_date}" in report
 
 
 @pytest.mark.dependency()
 def test_validar_simplereport_retorna_validade_mais_proxima(stock):
     for stk in itertools.permutations(stock):
-        report = SimpleReport.generate(stk)  # type: ignore
+        report = SimpleReport.generate(list(stk))  # type: ignore
         assert f"Data de validade mais próxima: {closest_date}" in report
 
 
 @pytest.mark.dependency()
 def test_validar_simplereport_retorna_empresa_com_maior_estoque(stock):
     for stk in itertools.permutations(stock):
-        report = SimpleReport.generate(stk)  # type: ignore
+        report = SimpleReport.generate(list(stk))  # type: ignore
         expected = f"Empresa com mais produtos: {company_bigger_stock}"
         assert expected in report
 
@@ -88,7 +88,7 @@ def test_metodo_generate_de_simplereport_retorna_informacoes_simples():
 
 def test_validar_simplereport_retorna_formato_correto(stock):
     for stk in itertools.permutations(stock):
-        report = SimpleReport.generate(stk)  # type: ignore
+        report = SimpleReport.generate(list(stk))  # type: ignore
         expected = (
             f"Data de fabricação mais antiga: {oldest_date}\n"
             f"Data de validade mais próxima: {closest_date}\n"
