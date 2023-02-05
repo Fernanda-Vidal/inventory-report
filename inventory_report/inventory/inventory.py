@@ -21,10 +21,4 @@ class Inventory:
         complete = CompleteReport.generate(list_dict=list_dict)
         simple = SimpleReport.generate(list_dict=list_dict)
 
-        # if type == "simples":
-        #     return simple
-        # else:
-        #     print(complete)
-        #     return complete
-
         return simple if type == "simples" else complete

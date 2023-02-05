@@ -13,5 +13,5 @@ class CompleteReport:
 
         return (
             f"{simple}\n"
-            f"{response}\n"
+            f"{response}"
         )
