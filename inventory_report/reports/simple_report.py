@@ -1,7 +1,7 @@
 from collections import Counter
 
 
-class SimpleReport:
+class SimpleReport():
     @staticmethod
     def generate(list_dict):
         comp = []
