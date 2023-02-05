@@ -1,2 +1,2 @@
-            f"{simple}\n"
-            f"{response}\n"
+# f"{simple}\n"
+#             f"{response}\n"
