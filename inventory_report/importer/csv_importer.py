@@ -11,6 +11,6 @@ class CsvImporter(Importer):
                 )
                 list_dict = [dict for dict in reader]
             else:
-                raise ValueError
+                raise ValueError("Arquivo inválido")
 
             return list_dict

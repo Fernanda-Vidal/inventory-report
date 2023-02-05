@@ -1,6 +1,6 @@
-import xmltodict
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -14,13 +14,17 @@ class Inventory:
         if "json" in path:
             list_dict = JsonImporter.import_data(path)
 
-# https://pypi.org/project/xmltodict/
+        # https://pypi.org/project/xmltodict/
         if "xml" in path:
-            with open(path) as file:
-                content = file.read()
-                list_dict = xmltodict.parse(content)
+            list_dict = XmlImporter.import_data(path)
 
         complete = CompleteReport.generate(list_dict=list_dict)
         simple = SimpleReport.generate(list_dict=list_dict)
 
-        return simple if type == "simples" else complete
+        if type == "simples":
+            return simple
+        else:
+            print(complete)
+            return complete
+
+        # return simple if type == "simples" else complete

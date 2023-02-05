@@ -6,9 +6,10 @@ class XmlImporter(Importer):
     def import_data(path: str):
         with open(path) as file:
             if "xml" in path:
-                reader = file.read()
-                list_dict = xmltodict.parse(reader["dataset"]["record"])
+                list_dict = list(
+                    xmltodict.parse(file.read())["dataset"]["record"]
+                )
             else:
-                raise ValueError
+                raise ValueError("Arquivo inválido")
 
             return list_dict

@@ -9,6 +9,6 @@ class JsonImporter(Importer):
                 reader = file.read()
                 list_dict = json.loads(reader)
             else:
-                raise ValueError
+                raise ValueError("Arquivo inválido")
 
             return list_dict
