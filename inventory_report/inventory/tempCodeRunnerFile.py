@@ -1,1 +1,1 @@
-SimpleReport.generate(report_reader)
+# SimpleReport.generate(report_reader)
